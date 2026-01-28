@@ -1,0 +1,377 @@
+.money-command {
+  margin-bottom: 1.5rem;
+}
+
+.section-header {
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-icon {
+  font-size: 1.5rem;
+}
+
+.money-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+.money-card {
+  background: linear-gradient(135deg, #1e1e2e 0%, #252535 100%);
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.card-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin: 0;
+}
+
+.strategy-toggle {
+  display: flex;
+  gap: 0.25rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 0.2rem;
+}
+
+.toggle-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  border: none;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.toggle-btn:hover {
+  color: #ccc;
+}
+
+.toggle-btn.active {
+  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 100%);
+  color: #fff;
+}
+
+.debt-summary {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+.summary-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.stat-value.negative {
+  color: #ef4444;
+}
+
+.stat-value.positive {
+  color: #22c55e;
+}
+
+.debt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.debt-item {
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.2s;
+}
+
+.debt-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.debt-item.priority {
+  border-left: 3px solid #a78bfa;
+  background: rgba(167, 139, 250, 0.08);
+}
+
+.debt-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.debt-name {
+  font-weight: 500;
+  color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.priority-badge {
+  font-size: 0.6rem;
+  padding: 0.15rem 0.4rem;
+  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 100%);
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.debt-balance {
+  font-weight: 600;
+  color: #ef4444;
+}
+
+.debt-details {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #888;
+  align-items: center;
+}
+
+.btn-icon-only {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  padding: 0.25rem;
+  margin-left: auto;
+}
+
+.btn-icon-only:hover {
+  opacity: 1;
+}
+
+/* Income Section */
+.income-goal-section {
+  margin-bottom: 1.25rem;
+}
+
+.goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.goal-label {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.goal-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #22c55e;
+}
+
+.goal-progress {
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e 0%, #86efac 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.progress-stats .current {
+  color: #e0e0e0;
+  font-weight: 500;
+}
+
+.progress-stats .gap {
+  font-weight: 500;
+}
+
+.progress-stats .gap.negative {
+  color: #ef4444;
+}
+
+.progress-stats .gap.positive {
+  color: #22c55e;
+}
+
+.income-streams {
+  margin-bottom: 1rem;
+}
+
+.income-streams h4 {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.income-item {
+  padding: 0.6rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  margin-bottom: 0.4rem;
+}
+
+.income-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.income-name {
+  font-weight: 500;
+  color: #e0e0e0;
+}
+
+.income-amount {
+  font-weight: 600;
+  color: #22c55e;
+}
+
+.income-details {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: #888;
+  align-items: center;
+}
+
+.income-freq {
+  text-transform: capitalize;
+}
+
+.income-category {
+  padding: 0.1rem 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  text-transform: capitalize;
+}
+
+/* Add Forms */
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+.add-form input,
+.add-form select {
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.add-form input:focus,
+.add-form select:focus {
+  outline: none;
+  border-color: #a78bfa;
+}
+
+.add-form input::placeholder {
+  color: #666;
+}
+
+.form-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.form-row input,
+.form-row select {
+  flex: 1;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.add-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .money-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .debt-details {
+    flex-wrap: wrap;
+  }
+}

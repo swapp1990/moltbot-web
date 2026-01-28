@@ -1,22 +1,22 @@
-import MorningDigest from './components/MorningDigest'
+import { AppProvider } from './store/AppContext'
+import Header from './components/Header'
+import MoneyCommand from './components/MoneyCommand'
+import TodayTomorrow from './components/TodayTomorrow'
+import ProjectsSection from './components/ProjectsSection'
 import './App.css'
 
 declare const __BUILD_SHA__: string
 declare const __BUILD_TIME__: string
 
-function App() {
+function Dashboard() {
   return (
-    <div className="app">
-      <MorningDigest />
-
-      <div className="app-content">
-        <div className="brand">
-          <span className="brand-icon">🤖</span>
-          <h2 className="brand-title">Moltbot</h2>
-          <p className="brand-tagline">Your AI assistant dashboard</p>
-        </div>
-      </div>
-
+    <div className="dashboard">
+      <Header />
+      <main className="dashboard-main">
+        <MoneyCommand />
+        <TodayTomorrow />
+        <ProjectsSection />
+      </main>
       <footer className="build-footer">
         Build: {__BUILD_SHA__} | Deployed: {__BUILD_TIME__}
       </footer>
@@ -24,4 +24,10 @@ function App() {
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <AppProvider>
+      <Dashboard />
+    </AppProvider>
+  )
+}
