@@ -176,10 +176,12 @@ export default function TodayTomorrow() {
         </button>
       )}
 
-      <div className="calendar-note">
-        <span className="note-icon">💡</span>
-        <span>Calendar sync coming soon. For now, add events manually.</span>
-      </div>
+      {state.calendarEvents.length === 0 && (
+        <div className="calendar-note">
+          <span className="note-icon">💡</span>
+          <span>Calendar sync coming soon. For now, add events manually.</span>
+        </div>
+      )}
     </section>
   )
 }

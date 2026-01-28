@@ -121,29 +121,37 @@ export default function MoneyCommand() {
           </div>
 
           <div className="debt-list">
-            {sortedDebts.map((debt, index) => (
-              <div key={debt.id} className={`debt-item ${index === 0 ? 'priority' : ''}`}>
-                <div className="debt-main">
-                  <span className="debt-name">
-                    {index === 0 && <span className="priority-badge">PRIORITY</span>}
-                    {debt.name}
-                  </span>
-                  <span className="debt-balance">{formatCurrency(debt.balance)}</span>
+            {sortedDebts.length > 0 ? (
+              sortedDebts.map((debt, index) => (
+                <div key={debt.id} className={`debt-item ${index === 0 ? 'priority' : ''}`}>
+                  <div className="debt-main">
+                    <span className="debt-name">
+                      {index === 0 && <span className="priority-badge">PRIORITY</span>}
+                      {debt.name}
+                    </span>
+                    <span className="debt-balance">{formatCurrency(debt.balance)}</span>
+                  </div>
+                  <div className="debt-details">
+                    <span>{debt.apr}% APR</span>
+                    <span>Min: {formatCurrency(debt.minPayment)}</span>
+                    <span>Due: {debt.dueDate}{debt.dueDate === 1 ? 'st' : debt.dueDate === 2 ? 'nd' : debt.dueDate === 3 ? 'rd' : 'th'}</span>
+                    <button
+                      className="btn-icon-only delete-btn"
+                      onClick={() => dispatch({ type: 'DELETE_DEBT', payload: debt.id })}
+                      title="Remove"
+                    >
+                      🗑️
+                    </button>
+                  </div>
                 </div>
-                <div className="debt-details">
-                  <span>{debt.apr}% APR</span>
-                  <span>Min: {formatCurrency(debt.minPayment)}</span>
-                  <span>Due: {debt.dueDate}{debt.dueDate === 1 ? 'st' : debt.dueDate === 2 ? 'nd' : debt.dueDate === 3 ? 'rd' : 'th'}</span>
-                  <button
-                    className="btn-icon-only"
-                    onClick={() => dispatch({ type: 'DELETE_DEBT', payload: debt.id })}
-                    title="Remove"
-                  >
-                    🗑️
-                  </button>
-                </div>
+              ))
+            ) : (
+              <div className="empty-state">
+                <span className="empty-icon">🎉</span>
+                <p>No debts tracked yet!</p>
+                <span className="empty-hint">Add your first debt to start tracking payoff progress.</span>
               </div>
-            ))}
+            )}
           </div>
 
           {showAddDebt ? (
@@ -225,25 +233,32 @@ export default function MoneyCommand() {
 
           <div className="income-streams">
             <h4>Income Streams</h4>
-            {state.incomeStreams.map((stream) => (
-              <div key={stream.id} className="income-item">
-                <div className="income-main">
-                  <span className="income-name">{stream.name}</span>
-                  <span className="income-amount">{formatCurrency(stream.amount)}</span>
+            {state.incomeStreams.length > 0 ? (
+              state.incomeStreams.map((stream) => (
+                <div key={stream.id} className="income-item">
+                  <div className="income-main">
+                    <span className="income-name">{stream.name}</span>
+                    <span className="income-amount">{formatCurrency(stream.amount)}</span>
+                  </div>
+                  <div className="income-details">
+                    <span className="income-freq">{stream.frequency}</span>
+                    <span className="income-category">{stream.category}</span>
+                    <button
+                      className="btn-icon-only delete-btn"
+                      onClick={() => dispatch({ type: 'DELETE_INCOME', payload: stream.id })}
+                      title="Remove"
+                    >
+                      🗑️
+                    </button>
+                  </div>
                 </div>
-                <div className="income-details">
-                  <span className="income-freq">{stream.frequency}</span>
-                  <span className="income-category">{stream.category}</span>
-                  <button
-                    className="btn-icon-only"
-                    onClick={() => dispatch({ type: 'DELETE_INCOME', payload: stream.id })}
-                    title="Remove"
-                  >
-                    🗑️
-                  </button>
-                </div>
+              ))
+            ) : (
+              <div className="empty-state small">
+                <p>No income streams added</p>
+                <span className="empty-hint">Track your salary, freelance, and other income.</span>
               </div>
-            ))}
+            )}
           </div>
 
           {showAddIncome ? (

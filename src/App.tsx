@@ -1,5 +1,6 @@
 import { AppProvider } from './store/AppContext'
 import Header from './components/Header'
+import MorningDigest from './components/MorningDigest'
 import MoneyCommand from './components/MoneyCommand'
 import TodayTomorrow from './components/TodayTomorrow'
 import ProjectsSection from './components/ProjectsSection'
@@ -13,6 +14,7 @@ function Dashboard() {
     <div className="dashboard">
       <Header />
       <main className="dashboard-main">
+        <MorningDigest />
         <MoneyCommand />
         <TodayTomorrow />
         <ProjectsSection />
