@@ -75,6 +75,7 @@ export default function Header() {
           <button className="btn btn-secondary" onClick={exportJSON}>
             <span className="btn-icon">📤</span> Export JSON
           </button>
+          <span className="data-note">Data stored locally in your browser only</span>
         </div>
       </div>
 

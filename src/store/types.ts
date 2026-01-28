@@ -49,31 +49,28 @@ export interface AppState {
   todayFocus: string
 }
 
+// Demo data - clearly fake examples for illustration
 export const defaultState: AppState = {
   debts: [
-    { id: '1', name: 'Chase Sapphire', balance: 4500, apr: 24.99, minPayment: 125, dueDate: 15, category: 'credit_card' },
-    { id: '2', name: 'Student Loan', balance: 18000, apr: 5.5, minPayment: 250, dueDate: 1, category: 'loan' },
-    { id: '3', name: 'Car Loan', balance: 12000, apr: 6.9, minPayment: 350, dueDate: 20, category: 'loan' },
+    { id: '1', name: 'Sample Credit Card', balance: 1234, apr: 19.99, minPayment: 50, dueDate: 15, category: 'credit_card' },
+    { id: '2', name: 'Example Loan', balance: 5000, apr: 6.5, minPayment: 100, dueDate: 1, category: 'loan' },
   ],
   incomeStreams: [
-    { id: '1', name: 'Primary Salary', amount: 8500, frequency: 'monthly', category: 'salary' },
-    { id: '2', name: 'Freelance Dev', amount: 1200, frequency: 'monthly', category: 'freelance' },
-    { id: '3', name: 'Dividend Income', amount: 150, frequency: 'monthly', category: 'investment' },
+    { id: '1', name: 'Sample Salary', amount: 5000, frequency: 'monthly', category: 'salary' },
+    { id: '2', name: 'Example Side Gig', amount: 500, frequency: 'monthly', category: 'freelance' },
   ],
   incomeGoal: {
-    monthlyTarget: 12000,
-    currentActual: 9850,
+    monthlyTarget: 6000,
+    currentActual: 5500,
   },
   payoffStrategy: 'avalanche',
   calendarEvents: [
-    { id: '1', title: 'Team standup', date: new Date().toISOString().split('T')[0], time: '10:00', type: 'meeting' },
-    { id: '2', title: 'Flight to NYC', date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], type: 'travel' },
+    { id: '1', title: 'Sample Meeting', date: new Date().toISOString().split('T')[0], time: '10:00', type: 'meeting' },
+    { id: '2', title: 'Example Trip', date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], type: 'travel' },
   ],
   projects: [
-    { id: '1', name: 'lmafy_lite', emoji: '🚀', status: 'active', nextMilestone: 'Complete LifeStream features', lastDeploy: '2026-01-28', repoUrl: 'https://github.com/swapp1990/lmafy_lite' },
-    { id: '2', name: 'Vacation Photos', emoji: '📸', status: 'active', nextMilestone: 'App Clip polish', lastDeploy: '2026-01-27', repoUrl: 'https://github.com/swapp1990/vacation-photos' },
-    { id: '3', name: 'LMWFY', emoji: '✍️', status: 'active', nextMilestone: 'App Store approval', lastDeploy: '2026-01-23', repoUrl: 'https://github.com/swapp1990/lmwfy-ios' },
-    { id: '4', name: 'Moltbot Web', emoji: '🤖', status: 'active', nextMilestone: 'Backend integration', lastDeploy: new Date().toISOString().split('T')[0], repoUrl: 'https://github.com/swapp1990/moltbot-web' },
+    { id: '1', name: 'Sample Project', emoji: '🚀', status: 'active', nextMilestone: 'Add new feature', lastDeploy: '2026-01-01', repoUrl: 'https://github.com/example/sample-project' },
+    { id: '2', name: 'Demo App', emoji: '📱', status: 'active', nextMilestone: 'Launch MVP', lastDeploy: '2026-01-01', repoUrl: 'https://github.com/example/demo-app' },
   ],
   todayFocus: '',
 }

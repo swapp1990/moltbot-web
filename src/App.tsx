@@ -1,4 +1,5 @@
 import { AppProvider } from './store/AppContext'
+import DemoBanner from './components/DemoBanner'
 import Header from './components/Header'
 import MorningDigest from './components/MorningDigest'
 import MoneyCommand from './components/MoneyCommand'
@@ -12,6 +13,7 @@ declare const __BUILD_TIME__: string
 function Dashboard() {
   return (
     <div className="dashboard">
+      <DemoBanner />
       <Header />
       <main className="dashboard-main">
         <MorningDigest />

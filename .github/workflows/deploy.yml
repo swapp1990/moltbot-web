@@ -45,6 +45,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            VITE_GIT_SHA=${{ github.sha }}
+            VITE_BUILD_TIME=${{ github.event.head_commit.timestamp }}
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3

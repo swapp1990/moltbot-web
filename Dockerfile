@@ -3,6 +3,12 @@ FROM node:20-alpine as build
 
 WORKDIR /app
 
+# Accept build args for version info
+ARG VITE_GIT_SHA=unknown
+ARG VITE_BUILD_TIME=unknown
+ENV VITE_GIT_SHA=$VITE_GIT_SHA
+ENV VITE_BUILD_TIME=$VITE_BUILD_TIME
+
 COPY package*.json ./
 RUN npm ci
 
