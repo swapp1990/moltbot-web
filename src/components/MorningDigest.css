@@ -1,0 +1,171 @@
+.morning-digest {
+  background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.digest-header {
+  margin-bottom: 1.5rem;
+}
+
+.digest-greeting {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.digest-time {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.digest-focus {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.focus-label {
+  color: #a78bfa;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.focus-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.5rem;
+  outline: none;
+  border-bottom: 2px solid #a78bfa;
+}
+
+.focus-input::placeholder {
+  color: #666;
+}
+
+.focus-display {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 1rem;
+  padding: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.focus-display:hover {
+  background: rgba(167, 139, 250, 0.1);
+  color: #fff;
+}
+
+.digest-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.projects-label {
+  color: #888;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.projects-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.project-link:hover {
+  background: rgba(167, 139, 250, 0.15);
+  border-color: rgba(167, 139, 250, 0.3);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.project-emoji {
+  font-size: 1.1rem;
+}
+
+.project-name {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  font-size: 0.85rem;
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .morning-digest {
+    padding: 1.5rem;
+  }
+
+  .digest-greeting {
+    font-size: 1.5rem;
+  }
+
+  .digest-focus {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .focus-input,
+  .focus-display {
+    width: 100%;
+  }
+}
