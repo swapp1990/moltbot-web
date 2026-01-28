@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+
+.build-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  background: #1a1a1a;
+  color: #666;
+  font-size: 0.75rem;
+  font-family: monospace;
+  text-align: center;
+  border-top: 1px solid #333;
+}

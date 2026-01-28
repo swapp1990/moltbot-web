@@ -3,6 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+declare const __BUILD_SHA__: string
+declare const __BUILD_TIME__: string
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -28,6 +31,9 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <footer className="build-footer">
+        Build: {__BUILD_SHA__} | Deployed: {__BUILD_TIME__}
+      </footer>
     </>
   )
 }
