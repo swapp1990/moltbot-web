@@ -1,0 +1,64 @@
+.about-banner {
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.1) 0%, rgba(129, 140, 248, 0.05) 100%);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about-main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.about-badge {
+  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 100%);
+  color: #1a1a2e;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.about-text {
+  color: #ccc;
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.about-privacy {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.privacy-icon {
+  font-size: 0.9rem;
+}
+
+.privacy-text {
+  color: #888;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .about-banner {
+    padding: 0.75rem 1rem;
+  }
+
+  .about-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

@@ -64,37 +64,10 @@
   flex-shrink: 0;
 }
 
-.project-milestone {
-  padding: 0.6rem 0.75rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
-  border-left: 2px solid #a78bfa;
-}
-
-.milestone-label {
-  display: block;
-  font-size: 0.7rem;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.25rem;
-}
-
-.milestone-text {
+.project-description {
   font-size: 0.85rem;
-  color: #e0e0e0;
-}
-
-.project-deploy {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  color: #888;
-}
-
-.deploy-icon {
-  font-size: 0.9rem;
+  color: #999;
+  line-height: 1.4;
 }
 
 .project-link {

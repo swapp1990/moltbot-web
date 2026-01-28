@@ -1,17 +1,5 @@
-import { useApp } from '../store/AppContext'
+import { publicProjects } from '../data/publicProjects'
 import './ProjectsSection.css'
-
-function formatRelativeDate(dateStr: string): string {
-  const date = new Date(dateStr)
-  const now = new Date()
-  const diffDays = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24))
-
-  if (diffDays === 0) return 'Today'
-  if (diffDays === 1) return 'Yesterday'
-  if (diffDays < 7) return `${diffDays} days ago`
-  if (diffDays < 30) return `${Math.floor(diffDays / 7)} week${Math.floor(diffDays / 7) > 1 ? 's' : ''} ago`
-  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-}
 
 const statusColors: Record<string, string> = {
   active: '#22c55e',
@@ -20,8 +8,6 @@ const statusColors: Record<string, string> = {
 }
 
 export default function ProjectsSection() {
-  const { state } = useApp()
-
   return (
     <section className="projects-section">
       <div className="section-header">
@@ -29,7 +15,7 @@ export default function ProjectsSection() {
       </div>
 
       <div className="projects-grid">
-        {state.projects.map((project) => (
+        {publicProjects.map((project) => (
           <a
             key={project.id}
             href={project.repoUrl}
@@ -51,19 +37,9 @@ export default function ProjectsSection() {
               </div>
             </div>
 
-            <div className="project-milestone">
-              <span className="milestone-label">Next milestone</span>
-              <span className="milestone-text">{project.nextMilestone}</span>
+            <div className="project-description">
+              {project.description}
             </div>
-
-            {project.lastDeploy && (
-              <div className="project-deploy">
-                <span className="deploy-icon">🚀</span>
-                <span className="deploy-text">
-                  Last deploy: {formatRelativeDate(project.lastDeploy)}
-                </span>
-              </div>
-            )}
 
             <div className="project-link">
               View on GitHub →
