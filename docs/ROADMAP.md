@@ -2,6 +2,17 @@
 
 Last updated: 2026-01-29 (UTC)
 
+## Recently shipped (2026-01-29)
+- **Calendar event action buttons now usable on mobile + keyboard**
+  - Mobile: action icons are visible by default (no hover required)
+  - Desktop: actions appear on hover and `:focus-within`
+  - Added `:focus-visible` outline for better accessibility
+- **Build footer chip respects iOS safe-area insets**
+  - Prevents the chip from sitting under the iPhone home indicator
+- **Added real `/robots.txt` + `/sitemap.xml`**
+  - Correct content-types; no longer served by SPA fallback
+
+
 ## Next (high-signal, small)
 1. **Fix first-paint loading placeholder (avoid blank screen on slow JS)**
    - Observed (live CSS): `.loading-placeholder{display:none}` hides the placeholder as soon as CSS loads, which can produce a brief blank page before React mounts.
