@@ -110,15 +110,24 @@
   opacity: 0;
   font-size: 0.8rem;
   color: #888;
+  transition: opacity 0.2s, color 0.2s;
 }
 
-.event-item:hover .btn-icon-only {
+.event-item:hover .btn-icon-only,
+.event-item:focus-within .btn-icon-only {
   opacity: 0.6;
 }
 
 .event-item .btn-icon-only:hover {
   opacity: 1;
   color: #ef4444;
+}
+
+.event-item .btn-icon-only:focus-visible {
+  opacity: 1;
+  outline: 2px solid #a78bfa;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Add Event Form */
@@ -197,5 +206,10 @@
 
   .add-event-form .form-row {
     flex-direction: column;
+  }
+
+  /* Show action buttons by default on mobile (no hover) */
+  .event-item .btn-icon-only {
+    opacity: 0.6;
   }
 }
