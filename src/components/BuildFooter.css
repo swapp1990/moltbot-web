@@ -1,7 +1,7 @@
 .build-footer {
   position: fixed;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  right: calc(1rem + env(safe-area-inset-right, 0px));
   background: #1a1a1a;
   border: 1px solid #333;
   border-radius: 8px;
@@ -79,7 +79,7 @@
 
 @media (max-width: 768px) {
   .build-footer {
-    bottom: 0.75rem;
-    right: 0.75rem;
+    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    right: calc(0.75rem + env(safe-area-inset-right, 0px));
   }
 }
