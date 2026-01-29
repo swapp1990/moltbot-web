@@ -1,5 +1,6 @@
 import { AppProvider } from './store/AppContext'
 import AboutBanner from './components/AboutBanner'
+import StatusPulse from './components/StatusPulse'
 import Header from './components/Header'
 import MorningDigest from './components/MorningDigest'
 import MoneyCommand from './components/MoneyCommand'
@@ -15,6 +16,7 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <AboutBanner />
+      <StatusPulse />
       <Header />
       <main className="dashboard-main">
         <MorningDigest />
