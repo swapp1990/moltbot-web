@@ -5,6 +5,7 @@ import MorningDigest from './components/MorningDigest'
 import MoneyCommand from './components/MoneyCommand'
 import TodayTomorrow from './components/TodayTomorrow'
 import ProjectsSection from './components/ProjectsSection'
+import BuildFooter from './components/BuildFooter'
 import './App.css'
 
 declare const __BUILD_SHA__: string
@@ -21,9 +22,7 @@ function Dashboard() {
         <TodayTomorrow />
         <ProjectsSection />
       </main>
-      <footer className="build-footer">
-        Build: {__BUILD_SHA__} | Deployed: {__BUILD_TIME__}
-      </footer>
+      <BuildFooter sha={__BUILD_SHA__} time={__BUILD_TIME__} />
     </div>
   )
 }

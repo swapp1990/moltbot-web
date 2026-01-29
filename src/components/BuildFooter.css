@@ -1,0 +1,85 @@
+.build-footer {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  font-size: 0.75rem;
+  color: #666;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  transition: all 0.2s ease;
+}
+
+.build-footer:hover {
+  border-color: #444;
+}
+
+.build-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #888;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.build-toggle:hover {
+  color: #a78bfa;
+}
+
+.build-toggle:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.build-label {
+  text-transform: lowercase;
+}
+
+.build-details {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid #333;
+}
+
+.build-sha {
+  color: #a78bfa;
+}
+
+.build-separator {
+  color: #444;
+}
+
+.build-time {
+  color: #666;
+}
+
+/* Collapsed state */
+.build-footer.collapsed .build-label {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .build-footer {
+    bottom: 0.75rem;
+    right: 0.75rem;
+  }
+}
