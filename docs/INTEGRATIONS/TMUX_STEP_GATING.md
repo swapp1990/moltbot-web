@@ -180,28 +180,123 @@ tmux attach -t claude-lmafy:plan
 
 ---
 
-## Integration with Moltbot (WhatsApp)
+## WhatsApp Bridge (via Moltbot Droplet)
 
-### Future: WhatsApp Notifications
+The watchdog can send notifications to WhatsApp by SSH-appending to a queue file on the Moltbot droplet. A separate process on the droplet reads this queue and sends WhatsApp messages.
 
-The watchdog can be extended to send WhatsApp messages via Moltbot:
+### Setup
 
-```bash
-# In watchdog.sh, replace terminal-notifier with:
-clawdbot message send --target +13852297404 \
-    --message "Step Complete: $PANE ready for next step"
+#### 1. Configure SSH Access to Droplet
+
+Add the droplet to your SSH config (`~/.ssh/config`):
+
+```
+Host moltbot-droplet
+    HostName 64.225.33.214
+    User clawd
+    IdentityFile ~/.ssh/moltbot_rsa
+    IdentitiesOnly yes
 ```
 
-### Future: WhatsApp Commands
+Test connectivity:
 
-Moltbot skill to check status and send steps:
+```bash
+ssh moltbot-droplet "echo 'SSH works'"
+```
+
+#### 2. Create Queue Directory on Droplet
+
+```bash
+ssh moltbot-droplet "mkdir -p /home/clawd/clawd/memory"
+```
+
+#### 3. Set Environment Variables
+
+Add to your shell profile (`~/.zshrc` or `~/.bashrc`):
+
+```bash
+# Moltbot WhatsApp Bridge
+export MOLT_BOT_NOTIFY=true
+export MOLT_BOT_SSH_HOST=moltbot-droplet
+export MOLT_BOT_QUEUE_PATH=/home/clawd/clawd/memory/notify-queue.jsonl
+```
+
+Reload:
+
+```bash
+source ~/.zshrc
+```
+
+### Usage
+
+With env vars set, watchdog automatically sends WhatsApp notifications:
+
+```bash
+# Start watchdog with WhatsApp enabled
+~/.moltbot/scripts/watchdog.sh claude-lmafy:plan 5
+
+# Output will show:
+# [14:30:00] WhatsApp bridge: ENABLED (host: moltbot-droplet)
+```
+
+### Notification Types
+
+| Status | When Sent | WhatsApp Message |
+|--------|-----------|------------------|
+| `DONE` | Step complete (prompt returned) | "Pane X is idle - ready for next step" |
+| `WAITING` | Command started | "Command started, waiting for completion" |
+| `BLOCKED` | Login/auth/CAPTCHA detected | "X in pane Y - needs attention" |
+
+### Queue File Format
+
+Notifications are appended as JSONL to the droplet:
+
+```json
+{"ts":"2026-01-29T14:30:00Z","type":"tmux-watchdog","status":"DONE","pane":"claude-lmafy:plan","message":"Pane claude-lmafy:plan is idle - ready for next step"}
+```
+
+### Droplet Queue Consumer (Future)
+
+A cron or daemon on the droplet reads `notify-queue.jsonl` and sends via Moltbot:
+
+```bash
+# /home/clawd/scripts/process-notify-queue.sh
+#!/bin/bash
+QUEUE="/home/clawd/clawd/memory/notify-queue.jsonl"
+PROCESSED="/home/clawd/clawd/memory/notify-queue.processed"
+
+if [[ -f "$QUEUE" ]]; then
+    while IFS= read -r line; do
+        MSG=$(echo "$line" | jq -r '"\(.status): \(.message)"')
+        clawdbot message send --target +13852297404 --message "$MSG"
+    done < "$QUEUE"
+    cat "$QUEUE" >> "$PROCESSED"
+    > "$QUEUE"
+fi
+```
+
+### Disable WhatsApp (macOS-only mode)
+
+```bash
+# Unset or set to false
+export MOLT_BOT_NOTIFY=false
+
+# Or run without env var
+MOLT_BOT_NOTIFY=false ~/.moltbot/scripts/watchdog.sh claude-lmafy:plan 5
+```
+
+---
+
+## Future: WhatsApp Commands
+
+Moltbot skill to check status and send steps remotely:
 
 ```
 You: "Status of plan window"
-Moltbot: [runs status.sh, returns output]
+Moltbot: [SSHs to Mac, runs status.sh, returns output]
 
 You: "Send to plan: Run the tests"
-Moltbot: [runs send-step.sh]
+Moltbot: [SSHs to Mac, runs send-step.sh]
 ```
 
 ---
@@ -296,11 +391,24 @@ Increase the interval:
 | Task | Command |
 |------|---------|
 | Start watchdog | `~/.moltbot/scripts/watchdog.sh claude-lmafy:plan 5 &` |
+| Start watchdog + WhatsApp | `MOLT_BOT_NOTIFY=true ~/.moltbot/scripts/watchdog.sh claude-lmafy:plan 5 &` |
 | Check status | `~/.moltbot/scripts/status.sh claude-lmafy:plan` |
 | Send next step | `~/.moltbot/scripts/send-step.sh claude-lmafy:plan "Do X"` |
 | Stop watchdogs | `pkill -f watchdog.sh` |
 | List sessions | `tmux list-sessions` |
 | Attach to window | `tmux attach -t claude-lmafy:plan` |
+| Test SSH to droplet | `ssh moltbot-droplet "echo ok"` |
+| View droplet queue | `ssh moltbot-droplet "cat /home/clawd/clawd/memory/notify-queue.jsonl"` |
+
+---
+
+## Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `MOLT_BOT_NOTIFY` | `false` | Enable WhatsApp bridge |
+| `MOLT_BOT_SSH_HOST` | `moltbot-droplet` | SSH host alias for droplet |
+| `MOLT_BOT_QUEUE_PATH` | `/home/clawd/clawd/memory/notify-queue.jsonl` | Queue file path on droplet |
 
 ---
 
@@ -309,6 +417,7 @@ Increase the interval:
 | Date | Change |
 |------|--------|
 | 2026-01-29 | Initial implementation |
+| 2026-01-29 | Add WhatsApp bridge via SSH to droplet queue |
 
 ---
 
