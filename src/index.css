@@ -50,8 +50,3 @@ button:focus-visible {
   outline: 2px solid #a78bfa;
   outline-offset: 2px;
 }
-
-/* Hide loading placeholder once React mounts */
-.loading-placeholder {
-  display: none;
-}
